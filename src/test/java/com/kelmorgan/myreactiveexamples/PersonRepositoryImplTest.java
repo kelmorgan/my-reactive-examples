@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import java.util.List;
 
@@ -91,6 +92,7 @@ class PersonRepositoryImplTest {
     void testMonoFindById() {
         final  Integer id = 2;
         Mono<Person> personMono = personRepository.findById(id);
+        StepVerifier.create(personMono).expectNextCount(1).verifyComplete();
         personMono.subscribe(System.out::println);
     }
 }
