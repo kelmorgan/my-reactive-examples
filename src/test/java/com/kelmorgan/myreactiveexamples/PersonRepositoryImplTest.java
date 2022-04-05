@@ -13,7 +13,6 @@ class PersonRepositoryImplTest {
     PersonRepositoryImpl personRepository;
     @BeforeEach
     void setUp() {
-
         personRepository = new PersonRepositoryImpl();
     }
 
