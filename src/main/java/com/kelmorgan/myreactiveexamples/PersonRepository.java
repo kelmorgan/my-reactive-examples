@@ -9,4 +9,6 @@ public interface PersonRepository {
     Mono<Person> getById(Integer id);
 
     Flux<Person> findAll();
+
+    Mono<Person> findById(Integer id);
 }

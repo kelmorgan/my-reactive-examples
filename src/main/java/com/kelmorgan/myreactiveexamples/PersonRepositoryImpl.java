@@ -21,4 +21,11 @@ public class PersonRepositoryImpl implements PersonRepository {
     public Flux<Person> findAll() {
         return Flux.just(sam,kufre,jesse,fiona);
     }
+
+    @Override
+    public Mono<Person> findById(Integer id) {
+        Flux<Person> personFlux = findAll();
+        Mono<Person> personMono = personFlux.filter(person -> person.getId() == id).single();
+        return personMono.onErrorReturn(Person.builder().id(id).build());
+    }
 }
